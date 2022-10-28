@@ -1,0 +1,10 @@
+function HCP_MSMresampleNative(subjid,outfolder)
+
+
+HCProot='/disk/HCP';
+if(nargin<2)
+    outfolder=fullfile(HCProot,'data');
+end
+
+HCP_matlab_setenv;
+

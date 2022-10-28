@@ -1,0 +1,57 @@
+tol=1.0e-04, sigma=2.0, host=unkno, nav=4, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+complete_dist_mat 0
+rms 0
+smooth_averages 0
+remove_neg 0
+ico_order 0
+which_surface 0
+target_radius 0.000000
+nfields 0
+scale 0.000000
+desired_rms_height 0.000000
+momentum 0.000000
+nbhd_size 0
+max_nbrs 0
+niterations 25
+nsurfaces 0
+SURFACES 3
+flags 262144 (40000)
+use curv 0
+no sulc 0
+no rigid align 0
+mris->nsize 2
+mris->hemisphere 1
+randomSeed 0
+
+000: dt: 0.0000, sse=4821439.5, rms=6.29
+001: dt: 0.5000, sse=5289572.0, rms=3.695 (0.000%)
+002: dt: 0.5000, sse=5882425.5, rms=2.937 (0.000%)
+003: dt: 0.5000, sse=6222798.0, rms=2.808 (0.000%)
+004: dt: 0.5000, sse=6381620.0, rms=2.803 (0.000%)
+005: dt: 0.2500, sse=4523117.0, rms=2.089 (0.000%)
+006: dt: 0.2500, sse=4312870.5, rms=1.929 (0.000%)
+007: dt: 0.2500, sse=4175771.2, rms=1.915 (0.000%)
+008: dt: 0.1250, sse=4111900.2, rms=1.877 (0.000%)
+tol=1.0e-04, sigma=1.0, host=unkno, nav=2, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4370415.5, rms=3.76
+009: dt: 0.5000, sse=4832935.5, rms=2.708 (0.000%)
+010: dt: 0.5000, sse=5781859.5, rms=2.599 (0.000%)
+011: dt: 0.2500, sse=4839645.0, rms=2.004 (0.000%)
+012: dt: 0.2500, sse=4520002.5, rms=1.747 (0.000%)
+013: dt: 0.2500, sse=4370959.0, rms=1.706 (0.000%)
+014: dt: 0.1250, sse=4293092.0, rms=1.671 (0.000%)
+tol=1.0e-04, sigma=0.5, host=unkno, nav=1, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4337202.5, rms=2.29
+015: dt: 0.5000, sse=4751709.5, rms=2.240 (0.000%)
+016: dt: 0.2500, sse=4668688.0, rms=1.713 (0.000%)
+017: dt: 0.2500, sse=4550200.0, rms=1.617 (0.000%)
+018: dt: 0.1250, sse=4504749.0, rms=1.594 (0.000%)
+tol=1.0e-04, sigma=0.2, host=unkno, nav=0, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4526345.5, rms=1.86
+019: dt: 0.5000, sse=6259608.5, rms=1.775 (0.000%)
+020: dt: 0.2500, sse=5463746.0, rms=1.346 (0.000%)
+021: dt: 0.1250, sse=5385825.0, rms=1.296 (0.000%)
