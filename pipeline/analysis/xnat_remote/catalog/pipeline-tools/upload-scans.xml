@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ pipeline: upload-scans.xml
+  ~ XNAT http://www.xnat.org
+  ~ Copyright (c) 2016, Washington University School of Medicine
+  ~ All Rights Reserved
+  ~
+  ~ Released under the Simplified BSD.
+  -->
+
+<Resource xmlns="http://nrg.wustl.edu/pipeline">
+    <name>upload-scans.py</name>
+    <commandPrefix>source /sulcusdata/xnat/pipeline/scripts/epd-python_setup.sh; python</commandPrefix>
+    <location>pipeline-tools</location>
+    <type>Executable</type>
+    <input>
+        <argument id="host" prefix="--">
+            <name>host</name>
+        </argument>
+        <argument id="username" prefix="--">
+            <name>username</name>
+        </argument>
+        <argument id="password" prefix="--">
+            <name>password</name>
+        </argument>
+        <argument id="sessionId" prefix="--">
+            <name>sessionId</name>
+        </argument>
+        <argument id="workflowId" prefix="--">
+            <name>workflowId</name>
+        </argument>
+        <argument id="delete" prefix="--">
+            <name>delete</name>
+        </argument>
+        <argument id="regenerateMetadata" prefix="--">
+            <name>regenerateMetadata</name>
+        </argument>
+        <argument id="scanDirs" />
+    </input>
+</Resource>

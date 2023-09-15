@@ -1,0 +1,59 @@
+tol=1.0e-04, sigma=2.0, host=unkno, nav=4, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+complete_dist_mat 0
+rms 0
+smooth_averages 0
+remove_neg 0
+ico_order 0
+which_surface 0
+target_radius 0.000000
+nfields 0
+scale 0.000000
+desired_rms_height 0.000000
+momentum 0.000000
+nbhd_size 0
+max_nbrs 0
+niterations 25
+nsurfaces 0
+SURFACES 3
+flags 262144 (40000)
+use curv 0
+no sulc 0
+no rigid align 0
+mris->nsize 2
+mris->hemisphere 0
+randomSeed 0
+
+000: dt: 0.0000, sse=5254671.5, rms=6.02
+001: dt: 0.5000, sse=5373678.5, rms=3.467 (0.000%)
+002: dt: 0.5000, sse=5839752.0, rms=2.870 (0.000%)
+003: dt: 0.5000, sse=6192503.0, rms=2.784 (0.000%)
+004: dt: 0.2500, sse=4732721.0, rms=2.123 (0.000%)
+005: dt: 0.2500, sse=4217392.5, rms=1.784 (0.000%)
+006: dt: 0.2500, sse=4041174.8, rms=1.698 (0.000%)
+007: dt: 0.2500, sse=3963078.0, rms=1.671 (0.000%)
+008: dt: 0.1250, sse=3905683.8, rms=1.638 (0.000%)
+tol=1.0e-04, sigma=1.0, host=unkno, nav=2, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4221424.0, rms=3.71
+009: dt: 0.5000, sse=4734371.5, rms=2.668 (0.000%)
+010: dt: 0.5000, sse=5474009.5, rms=2.627 (0.000%)
+011: dt: 0.2500, sse=4405984.0, rms=1.691 (0.000%)
+012: dt: 0.2500, sse=4262023.5, rms=1.485 (0.000%)
+013: dt: 0.2500, sse=4127287.8, rms=1.463 (0.000%)
+014: dt: 0.1250, sse=4073791.8, rms=1.421 (0.000%)
+tol=1.0e-04, sigma=0.5, host=unkno, nav=1, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4144525.0, rms=2.25
+015: dt: 0.5000, sse=4479024.0, rms=2.141 (0.000%)
+016: dt: 0.2500, sse=4300016.5, rms=1.628 (0.000%)
+017: dt: 0.2500, sse=4343404.5, rms=1.408 (0.000%)
+018: dt: 0.2500, sse=4299923.5, rms=1.391 (0.000%)
+019: dt: 0.1250, sse=4251685.0, rms=1.351 (0.000%)
+tol=1.0e-04, sigma=0.2, host=unkno, nav=0, nbrs=2, l_repulse=5.000, l_tspring=1.000, l_nspring=0.500, l_intensity=0.200, l_curv=1.000
+mom=0.00, dt=0.50
+000: dt: 0.0000, sse=4275327.0, rms=1.65
+020: dt: 0.5000, sse=5854154.0, rms=1.511 (0.000%)
+021: dt: 0.2500, sse=5271666.5, rms=1.154 (0.000%)
+022: dt: 0.2500, sse=5030417.5, rms=1.134 (0.000%)
+023: dt: 0.1250, sse=5071601.0, rms=1.091 (0.000%)

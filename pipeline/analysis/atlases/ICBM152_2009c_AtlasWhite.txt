@@ -1,0 +1,11 @@
+Frontal_L	30
+Frontal_R	17
+Parietal_L	57
+Parietal_R	105
+Occipital_L	73
+Occipital_R	45
+Temporal_L	83
+Temporal_R	59
+Cerebellum_L	67
+Cerebellum_R	76
+Brainsteam	20
