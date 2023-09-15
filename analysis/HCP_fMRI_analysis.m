@@ -1,6 +1,6 @@
 function varargout=HCP_fMRI_analysis(subjid,outfolder,runslurm,force)
 
-HCProot='/disk/HCP';
+HCProot='/aionraid/huppertt/raid2_BU/HCP/';
 if(nargin<2 || isempty(outfolder))
     outfolder=fullfile(HCProot,'analyzed');
 end
@@ -42,7 +42,7 @@ str={'BOLD_REST1_RL','BOLD_REST1_LR','BOLD_REST2_RL','BOLD_REST2_LR',...
  
  
  for i=1:length(subjid)
-    ff=getall_BOLDfiles(fullfile(outfolder,subjid(i).name,'unprocessed','3T'));
+     ff=dir(fullfile(outfolder,subjid(i).name,'unprocessed','3T','*BOLD*'));
      for i=1:length(ff)
          str{end+1}=ff(i).name;
      end
@@ -59,16 +59,8 @@ for i=1:length(subjid)
     for idx=1:length(str)
         if((exist(fullfile(outfolder,subjid(i).name,'unprocessed','3T',str{idx}))==7))
             if((~exist(fullfile(outfolder,subjid(i).name,'MNINonLinear','Results',str{idx},[ str{idx} '_Atlas.dtseries.nii'])) )...
-                    || force || iszerobyte(fullfile(outfolder,subjid(i).name,'MNINonLinear','Results',str{idx},[ str{idx} '_Atlas.dtseries.nii'])))
+                    || force)
                 TaskList=[TaskList str{idx} ' '];
-                
-                if(iszerobyte(fullfile(outfolder,subjid(i).name,'MNINonLinear','Results',str{idx},[ str{idx} '_Atlas.dtseries.nii'])))
-                    warning('Zero byte file detected');
-                    system(['rm -rfv ' fullfile(outfolder,subjid(i).name,'MNINonLinear','Results',str{idx})]);
-                    system(['rm -rfv ' fullfile(outfolder,subjid(i).name,str{idx})]);
-                end
-                
-                
                 if(~isempty(strfind(str{idx},'RL')));
                     direction='x';
                 elseif(~isempty(strfind(str{idx},'LR')));

@@ -79,6 +79,13 @@ for i=1:length(f)
     L=[L(:); TBL{i}.StructName(:)];
 end
 
+f=rdir(fullfile(folder,'T1w','WMH','*.dat'));
+TBL{end+1}=HCP_stats2table(f(1).name);
+Name{end+1}='LPA';
+L=[L(:); TBL{i}.StructName(:)];
+
+
+
 L=unique(L);
 s=struct;
 s.Region=L;
@@ -94,6 +101,7 @@ for i=1:length(Name)
 end
 
 s=struct2table(s);
+delete(fullfile(folder,'stats','WMH_stats.xls'))
 nirs.util.write_xls(fullfile(folder,'stats','WMH_stats.xls'),s);
 
 return

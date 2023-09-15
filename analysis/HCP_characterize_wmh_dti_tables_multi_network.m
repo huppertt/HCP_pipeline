@@ -91,7 +91,7 @@ RSN_regions = {'Visual1', 'Visual2', 'Visual2', 'Visual2', 'Visual2', 'Visual2',
 'Subcort', 'Subcort', 'Subcort', 'Subcort', 'Subcort', 'Subcort'};
 
 % networks = unique(RSN_regions);
-networks = {'Default','Frontopariet','Dorsal-atten','Subcort','Somatomotor','Visual1','Visual2'};
+networks = {'Default','Frontopariet','Dorsal-atten','Subcort','Somatomotor'};
 % networks = {'Dorsal-atten','Subcort'};
 % networks = {'Frontopariet'};
 
@@ -159,9 +159,7 @@ networks = {'Default','Frontopariet','Dorsal-atten','Subcort','Somatomotor','Vis
     datastruct.DTI_free= nan(numEdge*numSubj,1);
     datastruct.DTI_WMH= nan(numEdge*numSubj,1);
     datastruct.WMH = nan(numEdge*numSubj,1);
-    datastruct.WMHfrac = nan(numEdge*numSubj,1);
     datastruct.F = nan(numEdge*numSubj,1);
-    datastruct.zF = nan(numEdge*numSubj,1);
     
     for s = 1:numSubj
         
@@ -176,16 +174,10 @@ networks = {'Default','Frontopariet','Dorsal-atten','Subcort','Somatomotor','Vis
             datastruct.subject{ (s-1)*numEdge + e } = have_conn{s};
             datastruct.edge( (s-1)*numEdge + e ) =  e;
             datastruct.F( (s-1)*numEdge + e ) =  f(e);
-            datastruct.zF( (s-1)*numEdge + e ) =  atanh(f(e));
             datastruct.WMH( (s-1)*numEdge + e ) = w(e);
             datastruct.DTI( (s-1)*numEdge + e ) = d(e);
             datastruct.DTI_free( (s-1)*numEdge + e ) = df(e);
             datastruct.DTI_WMH( (s-1)*numEdge + e ) = dw(e);
-            if d(e) ~= 0
-                datastruct.WMHfrac( (s-1)*numEdge + e ) = dw(e)/d(e);
-            else
-                datastruct.WMHfrac( (s-1)*numEdge + e ) = 0;
-            end
             
             [r,c] = ind2sub(372,linIdx(e));
             datastruct.net{ (s-1)*numEdge + e } = [idx_names{find(idx==r)} '_' idx_names{find(idx==c)}];

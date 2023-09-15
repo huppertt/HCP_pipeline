@@ -1,6 +1,6 @@
 function HCP_dsistudio_WMH(subjid,outfolder,force)
 
-% Last modified 04/22/2022
+% Last modified 07/01/2022
 
 % NOTE: This code uses the ACPC aligned DWI data in
 % outfolder/subjid/T1w/subjid/dmri and NOT the DWI data in
@@ -8,6 +8,10 @@ function HCP_dsistudio_WMH(subjid,outfolder,force)
 
 % It constructs a native space atlas using subject-specific HCP-MMP volumes
 % and the subcortical atlas
+
+if(nargin<2 || isempty(outfolder))
+    outfolder='/disk/HCP/analyzed';
+end
 
 if(nargin<3)
     force=false;
@@ -22,12 +26,15 @@ cd(fullfile(outfolder,subjid,'T1w',subjid,'dmri'));
 
 if(ismac)
     [~,whoami]=system('whoami');
-     dsiroot = ['/Applications/dsi_studio.app/Contents/MacOS/'];
+     % dsiroot = ['/Applications/dsi_studio.app/Contents/MacOS/'];
     % dsiroot = ['/Applications/dsi_studio_Feb2020.app/Contents/MacOS/'];
    % dsiroot = ['/Applications/dsi_studio_Mar2020.app/Contents/MacOS/'];
 end
+dsiroot = '/usr/local/bin/dsi-studio/';
 
 HCP_matlab_setenv
+
+disp(['Beginning DSI Studio processing for ' subjid])
 
 if~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','HCP-MMP_subcort_atlas.nii.gz'),'file') & ~force)
     
@@ -102,15 +109,14 @@ if~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','HCP-MMP_subcort_atlas.n
     writetable(cell2table(text),'HCP-MMP_subcort_atlas.txt', 'Delimiter', 'tab')
 end
 
-if ~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','aparc+aseg.nii.gz'),'file') & ~force)
+if ~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','desikan_CIC_atlas.nii.gz'),'file') & ~force)
     
     system(['cp -v ' fullfile(outfolder,subjid,'T1w',['aparc+aseg.nii.gz'])	' ./aparc+aseg.nii.gz']);          % Subject-specfic Desikan atlas
       
-    aparc_labels = {'1001','ctx-lh-bankssts';'1002','ctx-lh-caudalanteriorcingulate';'1003','ctx-lh-caudalmiddlefrontal';'1004','ctx-lh-corpuscallosum';'1005','ctx-lh-cuneus';'1006','ctx-lh-entorhinal';'1007','ctx-lh-fusiform';'1008','ctx-lh-inferiorparietal';'1009','ctx-lh-inferiortemporal';'1010','ctx-lh-isthmuscingulate';'1011','ctx-lh-lateraloccipital';'1012','ctx-lh-lateralorbitofrontal';'1013','ctx-lh-lingual';'1014','ctx-lh-medialorbitofrontal';'1015','ctx-lh-middletemporal';'1016','ctx-lh-parahippocampal';'1017','ctx-lh-paracentral';'1018','ctx-lh-parsopercularis';'1019','ctx-lh-parsorbitalis';'1020','ctx-lh-parstriangularis';'1021','ctx-lh-pericalcarine';'1022','ctx-lh-postcentral';'1023','ctx-lh-posteriorcingulate';'1024','ctx-lh-precentral';'1025','ctx-lh-precuneus';'1026','ctx-lh-rostralanteriorcingulate';'1027','ctx-lh-rostralmiddlefrontal';'1028','ctx-lh-superiorfrontal';'1029','ctx-lh-superiorparietal';'1030','ctx-lh-superiortemporal';'1031','ctx-lh-supramarginal';'1032','ctx-lh-frontalpole';'1033','ctx-lh-temporalpole';'1034','ctx-lh-transversetemporal';'1035','ctx-lh-insula';'17','Left-Hippocampus';'18','Left-Amygdala'...
-        '2001','ctx-rh-bankssts';'2002','ctx-rh-caudalanteriorcingulate';'2003','ctx-rh-caudalmiddlefrontal';'2004','ctx-rh-corpuscallosum';'2005','ctx-rh-cuneus';'2006','ctx-rh-entorhinal';'2007','ctx-rh-fusiform';'2008','ctx-rh-inferiorparietal';'2009','ctx-rh-inferiortemporal';'2010','ctx-rh-isthmuscingulate';'2011','ctx-rh-lateraloccipital';'2012','ctx-rh-lateralorbitofrontal';'2013','ctx-rh-lingual';'2014','ctx-rh-medialorbitofrontal';'2015','ctx-rh-middletemporal';'2016','ctx-rh-parahippocampal';'2017','ctx-rh-paracentral';'2018','ctx-rh-parsopercularis';'2019','ctx-rh-parsorbitalis';'2020','ctx-rh-parstriangularis';'2021','ctx-rh-pericalcarine';'2022','ctx-rh-postcentral';'2023','ctx-rh-posteriorcingulate';'2024','ctx-rh-precentral';'2025','ctx-rh-precuneus';'2026','ctx-rh-rostralanteriorcingulate';'2027','ctx-rh-rostralmiddlefrontal';'2028','ctx-rh-superiorfrontal';'2029','ctx-rh-superiorparietal';'2030','ctx-rh-superiortemporal';'2031','ctx-rh-supramarginal';'2032','ctx-rh-frontalpole';'2033','ctx-rh-temporalpole';'2034','ctx-rh-transversetemporal';'2035','ctx-rh-insula';'53','Right-Hippocampus';'54','Right-Amygdala  '};
+    aparc_labels = {'1001','ctx-lh-bankssts';'1002','ctx-lh-caudalanteriorcingulate';'1003','ctx-lh-caudalmiddlefrontal';'1004','ctx-lh-corpuscallosum';'1005','ctx-lh-cuneus';'1006','ctx-lh-entorhinal';'1007','ctx-lh-fusiform';'1008','ctx-lh-inferiorparietal';'1009','ctx-lh-inferiortemporal';'1010','ctx-lh-isthmuscingulate';'1011','ctx-lh-lateraloccipital';'1012','ctx-lh-lateralorbitofrontal';'1013','ctx-lh-lingual';'1014','ctx-lh-medialorbitofrontal';'1015','ctx-lh-middletemporal';'1016','ctx-lh-parahippocampal';'1017','ctx-lh-paracentral';'1018','ctx-lh-parsopercularis';'1019','ctx-lh-parsorbitalis';'1020','ctx-lh-parstriangularis';'1021','ctx-lh-pericalcarine';'1022','ctx-lh-postcentral';'1023','ctx-lh-posteriorcingulate';'1024','ctx-lh-precentral';'1025','ctx-lh-precuneus';'1026','ctx-lh-rostralanteriorcingulate';'1027','ctx-lh-rostralmiddlefrontal';'1028','ctx-lh-superiorfrontal';'1029','ctx-lh-superiorparietal';'1030','ctx-lh-superiortemporal';'1031','ctx-lh-supramarginal';'1032','ctx-lh-frontalpole';'1033','ctx-lh-temporalpole';'1034','ctx-lh-transversetemporal';'1035','ctx-lh-insula';'2001','ctx-rh-bankssts';'2002','ctx-rh-caudalanteriorcingulate';'2003','ctx-rh-caudalmiddlefrontal';'2004','ctx-rh-corpuscallosum';'2005','ctx-rh-cuneus';'2006','ctx-rh-entorhinal';'2007','ctx-rh-fusiform';'2008','ctx-rh-inferiorparietal';'2009','ctx-rh-inferiortemporal';'2010','ctx-rh-isthmuscingulate';'2011','ctx-rh-lateraloccipital';'2012','ctx-rh-lateralorbitofrontal';'2013','ctx-rh-lingual';'2014','ctx-rh-medialorbitofrontal';'2015','ctx-rh-middletemporal';'2016','ctx-rh-parahippocampal';'2017','ctx-rh-paracentral';'2018','ctx-rh-parsopercularis';'2019','ctx-rh-parsorbitalis';'2020','ctx-rh-parstriangularis';'2021','ctx-rh-pericalcarine';'2022','ctx-rh-postcentral';'2023','ctx-rh-posteriorcingulate';'2024','ctx-rh-precentral';'2025','ctx-rh-precuneus';'2026','ctx-rh-rostralanteriorcingulate';'2027','ctx-rh-rostralmiddlefrontal';'2028','ctx-rh-superiorfrontal';'2029','ctx-rh-superiorparietal';'2030','ctx-rh-superiortemporal';'2031','ctx-rh-supramarginal';'2032','ctx-rh-frontalpole';'2033','ctx-rh-temporalpole';'2034','ctx-rh-transversetemporal';'2035','ctx-rh-insula'};
     
     aparc_aseg     = load_nii('./aparc+aseg.nii.gz');
-    aparc = aparc_aseg; aparc.img = nan(size(parc.img));
+    aparc = aparc_aseg; aparc.img = nan(size(aparc.img));
     
     for i  = 1:length(aparc_labels)
         idx =aparc_aseg.img == str2num(aparc_labels{i,1});
@@ -118,11 +124,15 @@ if ~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','aparc+aseg.nii.gz'),'f
     end
     
     % Reslice CIC atlas to subject MNI
+    setenv('SUBJECTS_DIR',fullfile(outfolder,subjid,'T1w',subjid))
     system(['mri_vol2vol '...
-        ' --mov '  fullfile(dsiroot,'atlas','ICBM152','CIC_LR.nii.gz')...
         ' --targ ' fullfile(outfolder,subjid,'MNINonLinear','T1w_restore_brain.nii.gz')...
-        ' --o '    fullfile(outfolder,subjid,'T1w',subjid,'dmri','CIC_resampled.nii.gz')...
-        ' --regheader --interp nearest']);
+        ' --regheader --interp nearest '...
+        ' --mov '  fullfile(dsiroot,'atlas','ICBM152','CIC_LR_atlas.nii')...
+        ' --o CIC_resampled.nii.gz'...
+        ]);
+
+
     
     % Warp resampled CIC to native space
     system(['applywarp --interp=nn '...
@@ -154,23 +164,30 @@ if ~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri','aparc+aseg.nii.gz'),'f
 
     for i  = 1:length(cic_labels)
         idx =cic_atlas.img == str2num(cic_labels{i,1});
-        aparc.img(idx) = str2num(aparc_labels{i,1});
+        aparc.img(idx) = str2num(cic_labels{i,1});
     end
     
-    save_nii(aparc, 'desikan_cort_atlas.nii.gz');
+    save_nii(aparc, 'desikan_CIC_atlas.nii.gz');
     
     % Create text file that has label names (DSI Studio will use this)
     text = [aparc_labels(:,1) aparc_labels(:,2) ; cic_labels(:,1) cic_labels(:,2)];
     % writecell(text,'HCP-MMP_subcort_atlas.txt', 'Delimiter', 'tab')
-    writetable(cell2table(text),'desikan_cort_atlas.txt', 'Delimiter', 'tab')
+    writetable(cell2table(text),'desikan_CIC_atlas.txt', 'Delimiter', 'tab')
 end
 
 
 %% Begin DSI Studio execution
-if(~ismac)
-    disp('DSI Studio can only run on MacOS. Exiting.')
+% Check if running on Ubuntu
+   [~,OSstring]=system('uname -a');
+   OS_data = strsplit(OSstring,' ');
+   machineName = OS_data{2};
+
+if(~ismac & ~strcmp(machineName,'theodore-MacPro'))
+    disp('DSI Studio can only run on MacOS or Ubuntu. Exiting.')
     return
 end
+
+dsiroot = '/usr/local/bin/dsi-studio/';
 
 if(~exist([ subjid '_dsistudio.fib.gz']) || force)
     
@@ -179,6 +196,7 @@ if(~exist([ subjid '_dsistudio.fib.gz']) || force)
     end
     
     % Generate source file
+    disp('Creating src file.')
     system([ dsiroot filesep 'dsi_studio --action=src ' ...
         '--source=dwi.nii.gz --bval=bvals --bvec=bvecs --output=' subjid '_dsistudio.src.gz']);
     
@@ -188,6 +206,7 @@ if(~exist([ subjid '_dsistudio.fib.gz']) || force)
     
     % Reconstruct the data to generate a .fib.gz file
     % Note WMH values are incuded as "lesion" under --other_image=
+    disp('Creating fib file.')
     system([dsiroot filesep 'dsi_studio --action=rec --source=' subjid '_dsistudio.src.gz '...
         ' --mask=brain_mask_dsi.nii.gz '...
         ' --method=7 --deconvolution=1 --param0=1.25 --record_odf=1 --reg_method=2 --param1=1 --thread_count=8 --output_jac=1 --output_mapping=1 '...
@@ -209,8 +228,9 @@ end
 
 % Generate trk.gz file (Note: We will want to increase the fiber count for final run. Seed count should be approx 10x-100x fiber count to terminate run if no fibers are found.)
 if(~exist([subjid '_dsistudio.trk.gz'],'file') || force)
+    disp('Generating trk file.')
     system([dsiroot filesep 'dsi_studio --action=trk --source=' subjid '_dsistudio.fib.gz '...
-        '--method=0 --fiber_count=10000000 --seed_count=1000000000 --thread_count=12 --output=' subjid '_dsistudio.trk']);  % 10000000 = ~ 1hour 25000000
+        '--method=0 --fiber_count=10000000 --seed_count=1000000000 --thread_count=12 --output=' subjid '_dsistudio.trk.gz']);  % 10000000 = ~ 1hour 25000000
     
 else
     disp(['skipping tracking ' subjid]);
@@ -218,6 +238,7 @@ end
 
 % Compute stats from trk.gz file
 if(~exist([subjid '_dsistudio.trk.gz.stat.txt'],'file') || force)
+    disp('Computing whole-brain track stats.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         '--tract=' subjid '_dsistudio.trk.gz --export=stat']); %,tdi,tdi2,qa,gfa']);
 end
@@ -227,9 +248,10 @@ end
 % Atlases listed under --connectivity=
 % Stats to compute under --connectivity_value=
 if(~exist([subjid '_dsistudio.trk.gz.HCP-MMP_subcort_atlas.count.end.connectivity.mat'],'file')...
-        || ~exist([subjid '_WMH_conn.HCP-MMP_subcort_atlas.count.end.connectivity.matat'],'file')...
+        || ~exist([subjid '_WMH_conn.HCP-MMP_subcort_atlas.count.end.connectivity.mat'],'file')...
         || force)
     
+    disp('Computing atlas connectivity.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         ' --tract=' subjid '_dsistudio.trk.gz '...
         ' --connectivity_threshold=0 '...
@@ -237,6 +259,7 @@ if(~exist([subjid '_dsistudio.trk.gz.HCP-MMP_subcort_atlas.count.end.connectivit
         ' --connectivity_value=qa,count,ncount,lesion '... % lesion
         ' --connectivity_type=pass,end']);
     
+    disp('Computing custom MMP atlas connectivity.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         ' --tract=' subjid '_dsistudio.trk.gz '...
         ' --connectivity_threshold=0 '...
@@ -244,17 +267,19 @@ if(~exist([subjid '_dsistudio.trk.gz.HCP-MMP_subcort_atlas.count.end.connectivit
         ' --connectivity_value=qa,count,ncount,lesion '... % lesion
         ' --connectivity_type=pass,end']);
     
-    % This section finds tracts that intersect WMH only
+    % This section finds tracts that intersection WMH only
    
     % Threshold WMH probability map and binarize (conservative 75%
     % threshold)
     if ~exist('./WMH_threshold.nii.gz','file') || force
+        disp('Binarizing WMH file.')
         system('fslmaths ./WMH.nii.gz -thr 0.75 -bin ./WMH_threshold.nii.gz');   
     end
     
     % Filter all tracts by WMH ROI; save new smaller trk file containing
     % tracts that pass through WMH only
     if ~exist(['./' subjid '_WMH_dsistudio.trk.gz'] ,'file') || force
+        disp('Generating WMH trk file.')
         system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
             ' --tract=' subjid '_dsistudio.trk.gz '...
             ' --roi=WMH_threshold.nii.gz'...
@@ -263,6 +288,7 @@ if(~exist([subjid '_dsistudio.trk.gz.HCP-MMP_subcort_atlas.count.end.connectivit
     
     % This analysis computes connectivity for the tracts passing through
     % WMH areas only
+    disp('Computing custom MMP atlas WMH connectivity.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         ' --tract=' subjid '_WMH_dsistudio.trk.gz '... % Use new smaller trk containing only WMH associated tracts
         ' --connectivity_threshold=0 '...
@@ -274,41 +300,42 @@ if(~exist([subjid '_dsistudio.trk.gz.HCP-MMP_subcort_atlas.count.end.connectivit
 end
 
 % This section runs the Desikan atlas for the Royse/Shaaban project
-if(~exist([subjid '_dsistudio.trk.gz.desikan_cort_atlas.count.end.connectivity.mat'],'file') ...
-        || ~exist([subjid '_WMH_conn.desikan_cort_atlas.count.end.connectivity.mat'],'file') ...
+if(~exist([subjid '_dsistudio.trk.gz.desikan_CIC_atlas.count.end.connectivity.mat'],'file') ...
+        || ~exist([subjid '_WMH_conn.desikan_CIC_atlas.count.end.connectivity.mat'],'file') ...
         || force)
     
-
+    disp('Computing custom Desikan atlas connectivity.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         ' --tract=' subjid '_dsistudio.trk.gz '...
         ' --connectivity_threshold=0 '...
-        ' --connectivity=desikan_cort_atlas.nii.gz '...
+        ' --connectivity=desikan_CIC_atlas.nii.gz '...
         ' --connectivity_value=qa,count,ncount,lesion '... % lesion
         ' --connectivity_type=pass,end']);
     
-    % This section finds tracts that intersection WMH only
+    % This section finds tracts that intersect WMH only
    
-    % Threshold WMH probability map and binarize (conservative 75%
-    % threshold)
-    if ~exist('./WMH_threshold.nii.gz','file') || force
-        system('fslmaths ./WMH.nii.gz -thr 0.75 -bin ./WMH_threshold.nii.gz');   
-    end  
-    
-    % Filter all tracts by WMH ROI; save new smaller trk file containing
-    % tracts that pass through WMH only
-    if ~exist(['./' subjid '_WMH_dsistudio.trk.gz'] ,'file') || force
-        system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
-            ' --tract=' subjid '_dsistudio.trk.gz '...
-            ' --roi=WMH_threshold.nii.gz'...
-            ' --output=' subjid '_WMH_dsistudio.trk.gz']);
-    end
+%     % Threshold WMH probability map and binarize (conservative 75%
+%     % threshold)
+%     if ~exist('./WMH_threshold.nii.gz','file') || force
+%         system('fslmaths ./WMH.nii.gz -thr 0.75 -bin ./WMH_threshold.nii.gz');   
+%     end  
+%     
+%     % Filter all tracts by WMH ROI; save new smaller trk file containing
+%     % tracts that pass through WMH only
+%     if ~exist(['./' subjid '_WMH_dsistudio.trk.gz'] ,'file') || force
+%         system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
+%             ' --tract=' subjid '_dsistudio.trk.gz '...
+%             ' --roi=WMH_threshold.nii.gz'...
+%             ' --output=' subjid '_WMH_dsistudio.trk.gz']);
+%     end
         
     % This analysis computes connectivity for the tracts passing through
     % WMH areas only
+    disp('Computing custom Desikan atlas WMH connectivity.')
     system([dsiroot filesep 'dsi_studio --action=ana --source=' subjid '_dsistudio.fib.gz '...
         ' --tract=' subjid '_WMH_dsistudio.trk.gz '... % Use new smaller trk containing only WMH associated tracts
         ' --connectivity_threshold=0 '...
-        ' --connectivity=desikan_cort_atlas.nii.gz '...
+        ' --connectivity=desikan_CIC_atlas.nii.gz '...
         ' --connectivity_value=qa,count,ncount,lesion '... % 
         ' --connectivity_type=end'...
         ' --output=' subjid '_WMH_conn']);

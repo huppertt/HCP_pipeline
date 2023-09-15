@@ -79,9 +79,9 @@ save_nii(volumetemplate,fileOut);
 
 
 % make the Gordan Atlas too
-f=fullfile(outfolder,subjid,'MNINonLinear','fsaverage_LR32k',[subjid '.L.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii']);
+f=fullfile(outfolder,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.L.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
 L_MMP=ft_read_cifti(f,'readsurface',false);
-f=fullfile(outfolder,subjid,'MNINonLinear','fsaverage_LR32k',[subjid '.R.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii']);
+f=fullfile(outfolder,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.R.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
 R_MMP=ft_read_cifti(f,'readsurface',false);
 
 Labels=[L_MMP.indexmax; R_MMP.indexmax+180];

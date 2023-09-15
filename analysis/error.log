@@ -1,1 +1,1 @@
-mghRead(/disk/HCP/analyzed/HCP444/T1w/HCP444/mri/brain.finalsurfs.mgz, -1): could not open file
+mghRead(/aionraid/huppertt/XnatDB/ROS-MOVE/B0734/T1w/B0734/mri/brain.finalsurfs.mgz, -1): could not open file

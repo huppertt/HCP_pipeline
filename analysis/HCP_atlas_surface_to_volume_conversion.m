@@ -2,11 +2,13 @@ function HCP_atlas_surface_to_volume_conversion(subjid,outfolder)
 if(nargin<2)
     outfolder='/disk/HCP/analyzed';
 end
+outfolder2='/home/theodore/Desktop/HCP';
+
 HCP_matlab_setenv
 cd(fullfile(outfolder, subjid, 'MNINonLinear','fsaverage_LR32k'))
 
-fL=fullfile(outfolder,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.L.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
-fR=fullfile(outfolder,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.R.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
+fL=fullfile(outfolder2,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.L.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
+fR=fullfile(outfolder2,'HCP201','MNINonLinear','fsaverage_LR32k','HCP201.R.CorticalAreas_dil_Final_Final_Areas_Group.32k_fs_LR.dlabel.nii');
 
 c=ft_read_cifti(fL);
 g=gifti;

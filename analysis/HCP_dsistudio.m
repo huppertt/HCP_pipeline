@@ -1,5 +1,11 @@
 function HCP_dsistudio(subjid,outfolder,force)
 
+setenv('LD_LIBRARY_PATH','/usr/local/freesurfer/lib/qt/lib');
+setenv('FREESURFER_HOME', '/usr/local/freesurfer');
+system('source /usr/local/freesurfer/SetUpFreeSurfer.sh')
+setenv('PATH', [ '/usr/local/freesurfer/bin:' getenv('PATH')]);
+
+
 
 HCProot='/disk/HCP';
 if(nargin<2 || isempty(outfolder))
@@ -25,9 +31,9 @@ if(ismac)
     %dsiroot = ['/Applications/dsi_studio_Mar2020.app/Contents/MacOS/'];
     
 end
-
+dsiroot = '/home/jhengenius/dsi-studio/';
 HCP_matlab_setenv
-
+cd(fullfile(outfolder,subjid,'T1w',subjid,'dmri'));
 if~(exist(fullfile(outfolder,subjid,'T1w',subjid,'dmri',[subjid '_dsistudio.trk.gz']),'file') & ~force)
 
     %% Data copying and resampling

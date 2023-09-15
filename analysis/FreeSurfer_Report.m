@@ -40,7 +40,7 @@ for i=1:10:size(a.img,1);
 end
 fprintf(fid,' -quit');
 fclose(fid);
-system(['freeview ' str ' -cmd freeviewcmd.txt']);
+system(['/usr/local/freesurfer/bin/freeview ' str ' -cmd freeviewcmd.txt']);
 
 if(strcmp(type,'recon'))
 system('rm -rf freeviewcmd.txt');
@@ -59,7 +59,7 @@ for i=1:10:size(a.img,3);
 end
 fprintf(fid,' -quit');
 fclose(fid);
-system(['freeview ' str ' -cmd freeviewcmd.txt ']);
+system(['/usr/local/freesurfer/bin/freeview ' str ' -cmd freeviewcmd.txt ']);
 else
     
     system('rm -rf freeviewcmd.txt');
@@ -69,7 +69,7 @@ for i=1:10:size(a.img,2);
 end
 fprintf(fid,' -quit');
 fclose(fid);
-system(['freeview ' str ' -cmd freeviewcmd.txt']);
+system(['/usr/local/freesurfer/bin/freeview ' str ' -cmd freeviewcmd.txt']);
 
 system('rm -rf freeviewcmd.txt');
 fid=fopen('freeviewcmd.txt','w+');
@@ -78,7 +78,7 @@ for i=1:10:size(a.img,3);
 end
 fprintf(fid,' -quit');
 fclose(fid);
-system(['freeview ' str ' -cmd freeviewcmd.txt ']);
+system(['/usr/local/freesurfer/bin/freeview ' str ' -cmd freeviewcmd.txt ']);
 end
 
 system(['mkdir -p ' fullfile(folder,subjid,'images')]);

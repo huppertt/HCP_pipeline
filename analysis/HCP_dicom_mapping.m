@@ -9,7 +9,7 @@ EPIFieldMapMag='None';  %TODO - make this more generic
 EPIFieldMapPhase='None';
 
 
-FM=dir(fullfile(dicomfolder,'FieldMap*'));
+FM=dir(fullfile(dicomfolder,'*FieldMap*'));
 if(~isempty(FM))
     if(length(FM)==2)
         EPIFieldMapMag=[FM(1).name '*'];  %TODO - make this more generic

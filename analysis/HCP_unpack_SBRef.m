@@ -1,8 +1,4 @@
-function HCP_unpack_SBRef(subjid,dcmfolder,outfolder)
-
-if(nargin<3)
-    outfolder='/disk/HCP/analyzed';
-end
+function HCP_unpack_SBRef(subjid,dcmfolder)
 
 f=dir(fullfile(dcmfolder,'*SB*'));
 
@@ -13,8 +9,7 @@ for i=1:length(f)
     else
         n2=n;
     end
-    n=upper(n); n2=upper(n2);
-    fout=fullfile(outfolder,subjid,'unprocessed','3T',...
+    fout=fullfile('/disk/HCP/analyzed',subjid,'unprocessed','3T',...
         n2,[subjid '_3T_' n '_SBRef.nii.gz']);
     m=rdir(fullfile(dcmfolder,f(i).name,'MR*'));
     if(exist(fout)~=2)

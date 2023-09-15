@@ -1,9 +1,0 @@
-#!/bin/bash
-
-h=`hostname -s`
-
-if [ ${h} = "cerebro"  ] ; then
-    java -jar /disk/HCP/pipeline/xnat_remote/lib/xnat-rest-client-1.6.4.jar $@
-else
-    java -jar /sulcusdata/xnat/pipeline/lib/xnat-rest-client-1.6.4.jar $@
-fi

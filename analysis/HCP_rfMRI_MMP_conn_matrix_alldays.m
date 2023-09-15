@@ -38,25 +38,17 @@ for i = 1:8
     end
 end
 scan_idx = find(scan_present==1);
- 
+
+
 for i = 1:8
     
     % Create data struct with first time course (BOLD_REST1_AP)
-    clear data;
     for j = 1:376
         data.BOLD(:,j) = tc_data(i).raw_tc(j).dat';
     end
-    motregs = tc_data(i).motionregs;
-    if size(motregs,1) > size(data.BOLD,1)
-        disp(['Motion regressors for run ' num2str(i) ' are length ' num2str(size(motregs,1)) '. Truncating'])
-        motregs = motregs(1:size(data.BOLD,1),:);
-    elseif size(motregs,1)<size(data.BOLD,1)
-        disp(['Motion regressors shorter than data. Returning.'])
-        return;
-    end
     
     % Regress out WM/CSF nuisance vars (currently not all subs have motion vars)
-    x = [ones(size(data.BOLD,1),1) data.BOLD(:,373:end) motregs ];
+    x = [ones(length(data.BOLD),1) data.BOLD(:,373:end)];
     data.resids = data.BOLD -x*pinv(x'*x)*x'*data.BOLD ;
     
     % Rename data as compact vars

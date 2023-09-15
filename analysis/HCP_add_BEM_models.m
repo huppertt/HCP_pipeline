@@ -61,7 +61,9 @@ system([str filesep 'mne_watershed_bem --atlas --overwrite']);
 curdir=pwd;
 
 cd(fullfile(getenv('SUBJECTS_DIR'),subjid,'bem'));
-system(['mkheadsurf -s ' subjid])
+if(exist(fullfile(getenv('SUBJECTS_DIR'),subjid,'mri','T1w_hires.norm_ribbon.nii.gz'))==0)
+    system(['mkheadsurf -s ' subjid]);
+end
 system(['mne_surf2bem --surf ../surf/lh.seghead --id 4 --check --fif ' subjid '-head-dense.fif'])
 
 

@@ -12,36 +12,40 @@ end
 
 if exist(fullfile(outfolder,subjid,'T2FLAIR'),'dir')
     
-    % Add SPM to path
-    spmdir = '/home/huppert/spm12';
-    addpath(spmdir)
-    
-    % Run noninteractive SPM session
-    spm('defaults','fmri');
-    spm_jobman('initcfg');
-    spm_get_defaults('cmdline',true);
-    
-    % Create WMH directory and copy ACPC-aligned T1 and T2FLAIR image to it
-    mkdir(fullfile(outfolder,subjid,'T1w','WMH'));
-    cd(fullfile(outfolder,subjid,'T1w','WMH'))
-    copyfile(fullfile(outfolder,subjid,'T2FLAIR',[subjid '_3T_T2FLAIR_acpc.nii.gz']),...
-        fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii.gz']));
-    copyfile(fullfile(outfolder,subjid,'T1w','T1w_acpc_dc_restore_brain.nii.gz'),...
-        fullfile(outfolder,subjid,'T1w','WMH', 'T1w_acpc_dc_restore_brain.nii.gz'));
-    
-    % Unzip nii.gzs (SPM only handles unzipped Nifti files)
-    system(['gunzip -f '  fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii.gz']) ] )
-    system(['gunzip -f '  fullfile(outfolder,subjid,'T1w','WMH','T1w_acpc_dc_restore_brain.nii.gz' ) ] )
-    
-    % Call LST - Lesion Prediction Algorithm from SPM toolbox
-    ps_LST_lpa( [fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii']) ', 1'] )
-    
-    % Call LST - Lesion Growth Algorithm from SPM toolbox
-    % ps_LST_lga([fullfile(outfolder,subjid,'T1w','WMH','T1w_acpc_dc_restore_brain.nii') ', 1'],...
-    %    [fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii']) ', 1'],0.1)
-    
-    % Exit SPM session
-    spm('Quit')
+    if(exist(fullfile(outfolder,subjid,'T1w','WMH',['ples_lpa_m' subjid '_3T_T2FLAIR_acpc.nii']))==0)
+        % Add SPM to path
+        spmdir = '/aionraid/huppertt/raid2_BU/HCP/pipeline/external/spm12/spm12/';
+        %addpath(spmdir)
+        
+        % Run noninteractive SPM session
+        spm('defaults','fmri');
+        spm_jobman('initcfg');
+        spm_get_defaults('cmdline',true);
+        
+        % Create WMH directory and copy ACPC-aligned T1 and T2FLAIR image to it
+        mkdir(fullfile(outfolder,subjid,'T1w','WMH'));
+        cd(fullfile(outfolder,subjid,'T1w','WMH'))
+        copyfile(fullfile(outfolder,subjid,'T2FLAIR',[subjid '_3T_T2FLAIR_acpc.nii.gz']),...
+            fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii.gz']));
+        copyfile(fullfile(outfolder,subjid,'T1w','T1w_acpc_dc_restore_brain.nii.gz'),...
+            fullfile(outfolder,subjid,'T1w','WMH', 'T1w_acpc_dc_restore_brain.nii.gz'));
+        
+        % Unzip nii.gzs (SPM only handles unzipped Nifti files)
+        system(['gunzip -f '  fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii.gz']) ] )
+        system(['gunzip -f '  fullfile(outfolder,subjid,'T1w','WMH','T1w_acpc_dc_restore_brain.nii.gz' ) ] )
+        
+        % Call LST - Lesion Prediction Algorithm from SPM toolbox
+        ps_LST_lpa( [fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii']) ', 0'] )
+        
+        % Call LST - Lesion Growth Algorithm from SPM toolbox
+        % ps_LST_lga([fullfile(outfolder,subjid,'T1w','WMH','T1w_acpc_dc_restore_brain.nii') ', 1'],...
+        %    [fullfile(outfolder,subjid,'T1w','WMH',[subjid '_3T_T2FLAIR_acpc.nii']) ', 1'],0.1)
+        
+        % Exit SPM session
+        spm('Quit');
+    else
+        disp('catching up');
+    end
     
     % Threshold/binarize lesion probability map (0.5) to get WMH map and save as
     % subjid_WMH_acpc.nii.gz

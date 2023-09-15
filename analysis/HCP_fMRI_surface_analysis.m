@@ -1,5 +1,6 @@
+function varargout=HCP_fMRI_surface_analysis(subjid,outfolder,runslurm,force)
 
-HCProot='/disk/HCP';
+HCProot='/aionraid/huppertt/raid2_BU/HCP/';
 if(nargin<2 || isempty(outfolder))
     outfolder=fullfile(HCProot,'analyzed');
 end
@@ -52,8 +53,8 @@ str={'BOLD_REST1_RL','BOLD_REST1_LR','BOLD_REST2_RL','BOLD_REST2_LR',...
      'pulsed_pair_1','pulsed_pair_2','pulsed_pair_3','pulsed_pair_4',...
      'RFMRI_REST_AP','RFMRI_REST_PA','HEAD_RFMRI_REST_AP','HEAD_RFMRI_REST_PA'};
  
- ff=getall_BOLDfiles(fullfile(outfolder,subjid,'MNINonLinear','Results'));
- 
+ ff=[dir(fullfile(outfolder,subjid,'MNINonLinear','Results','BOLD*')); ...
+     dir(fullfile(outfolder,subjid,'MNINonLinear','Results','*FMRI*'))]
  for i=1:length(ff)
      str{end+1}=ff(i).name;
  end

@@ -12,8 +12,8 @@ HCP_matlab_setenv;
 FLAIR=fullfile(outfolder,subjid,'T2FLAIR',[subjid '_3T_T2FLAIR_acpc.nii.gz']);
 
 if(~exist(FLAIR))
-    disp([subjid ' missing T2FLAIR. Skipping.'])
-    return
+   disp(['No FLAIR data. Skipping.'])
+   return
 end
 
 HiRES=fullfile(outfolder,subjid,'T1w','T1w_acpc.nii.gz');
@@ -26,8 +26,8 @@ if(exist(WMH2)==2 && ~force)
     return
 end
 
-setenv('PATH',[getenv('PATH') ':' getenv('FREESURFER_HOME') filesep 'fsfast' filesep 'bin']);
-setenv('PATH',[getenv('PATH') ':' getenv('FREESURFER_HOME') filesep 'mni' filesep 'bin']);
+% setenv('PATH',[getenv('PATH') ':' getenv('FREESURFER_HOME') filesep 'fsfast' filesep 'bin']);
+% setenv('PATH',[getenv('PATH') ':' getenv('FREESURFER_HOME') filesep 'mni' filesep 'bin']);
 
 FLAIRN4=HCP_N4filter(FLAIR,force);
 

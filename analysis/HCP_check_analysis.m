@@ -1,7 +1,7 @@
 function tbl=HCP_check_analysis(subjid,outfolder)
 HCP_matlab_setenv;
 
-HCProot='/disk/HCP/';
+HCProot='/aionraid/huppertt/raid2_BU/HCP/';
 if(nargin<2 || isempty(outfolder))
     outfolder=fullfile(HCProot,'analyzed');
 end
@@ -22,11 +22,15 @@ if(nargin<1 || isempty(subjid))
 end
 
 cdir=pwd;
-cd('/disk/HCP/pipeline/analysis/Xnat');
+cd([HCProot '/pipeline/analysis/Xnat']);
 [~,jsess]=system('./CreateXnatJess.sh');
-jsess=jsess(end-32:end);
-jsess(double(jsess)==10)=[];
-tblXnat = Xnat_get_SessionInfo(jsess);
+if(isempty(strfind(jsess,'not found')))
+    jsess=jsess(end-32:end);
+    jsess(double(jsess)==10)=[];
+    tblXnat = Xnat_get_SessionInfo(jsess);
+else
+    tblXnat=[];
+end
 cd(cdir);
 
 
@@ -48,22 +52,20 @@ for i=1:length(subjid)
   %  disp(i)
    tbl.Subjid{i,1}=subjid{i};
    if(~isempty(tblXnat))
-   tbl.Xnat(i,1)=ismember(subjid{i},tblXnat.SubjID)==1;
+    tbl.Xnat(i,1)=ismember(subjid{i},tblXnat.SubjID)==1;
    else
        tbl.Xnat(i,1)=false;
    end
    
-   
-   
-   tbl.Stage0(i,1)=HCP_check_stage(subjid{i},outfolder,0); %~isempty(dir(fullfile(outfolder,subjid{i},'unprocessed','3T','T1w_MPR1',[subjid{i} '_3T_T1w_MPR1.nii.gz'])));
-   tbl.Stage1(i,1)=HCP_check_stage(subjid{i},outfolder,1); %~isempty(dir(fullfile(outfolder,subjid{i},'MNINonLinear',[subjid{i} '.164k_fs_LR.wb.spec']))) &...
-       %~isempty(dir(fullfile(outfolder,subjid{i},'stats','aseg.stats')));
-   tbl.Stage2(i,1)=HCP_check_stage(subjid{i},outfolder,2); %~isempty(dir(fullfile(outfolder,subjid{i},'T1w',subjid{i},'dpath','merged_avg33_mni_bbr.mgz')));
-   tbl.Stage3(i,1)=HCP_check_stage(subjid{i},outfolder,3); %~isempty(rdir(fullfile(outfolder,subjid{i},'BOLD*','*nonlin.nii.gz')));
-   tbl.Stage4(i,1)=HCP_check_stage(subjid{i},outfolder,4); %~isempty(dir(fullfile(outfolder,subjid{i},'MNINonLinear','Results','BOLD_MSMconcat','BOLD_MSMconcat_Atlas_MSMSulc_prepared_nobias_vn.dtseries.nii')));
-   tbl.Stage5(i,1)=HCP_check_stage(subjid{i},outfolder,5); %~isempty(rdir(fullfile(outfolder,subjid{i},'ASL*','*_nonlin_norm.nii.gz')));
-   tbl.Stage6(i,1)=HCP_check_stage(subjid{i},outfolder,6); %~isempty(rdir(fullfile(outfolder,subjid{i},'MNINonLinear','Results','/BOLD*/BOLD*.feat/*dscalar.nii')));
-   tbl.Stage7(i,1)=HCP_check_stage(subjid{i},outfolder,7); %~isempty(rdir(fullfile(outfolder,subjid{i},'PET','gtmpvc.output','gtm.stats.dat')));
+   tbl.Stage0(i,1)=~isempty(dir(fullfile(outfolder,subjid{i},'unprocessed','3T','T1w_MPR1',[subjid{i} '_3T_T1w_MPR1.nii.gz'])));
+   tbl.Stage1(i,1)=~isempty(dir(fullfile(outfolder,subjid{i},'MNINonLinear',[subjid{i} '.164k_fs_LR.wb.spec']))) &...
+       ~isempty(dir(fullfile(outfolder,subjid{i},'stats','aseg.stats')));
+   tbl.Stage2(i,1)=~isempty(dir(fullfile(outfolder,subjid{i},'T1w',subjid{i},'dpath','merged_avg33_mni_bbr.mgz')));
+   tbl.Stage3(i,1)=~isempty(rdir(fullfile(outfolder,subjid{i},'BOLD*','*nonlin.nii.gz')));
+   tbl.Stage4(i,1)=~isempty(dir(fullfile(outfolder,subjid{i},'MNINonLinear','Results','BOLD_MSMconcat','BOLD_MSMconcat_Atlas_MSMSulc_prepared_nobias_vn.dtseries.nii')));
+   tbl.Stage5(i,1)=~isempty(rdir(fullfile(outfolder,subjid{i},'ASL*','*_nonlin_norm.nii.gz')));
+   tbl.Stage6(i,1)=~isempty(rdir(fullfile(outfolder,subjid{i},'MNINonLinear','Results','/BOLD*/BOLD*.feat/*dscalar.nii')));
+   tbl.Stage7(i,1)=~isempty(rdir(fullfile(outfolder,subjid{i},'PET','gtmpvc.output','gtm.stats.dat')));
 end
 
 % % now check for data files

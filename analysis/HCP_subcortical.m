@@ -4,7 +4,7 @@ if(nargin<3)
     force=false;
 end
 
-HCProot='/disk/HCP';
+HCProot='/aionraid/huppertt/raid2_BU/HCP/';
 if(nargin<2)
     outfolder=fullfile(HCProot,'analyzed');
 end
@@ -16,15 +16,21 @@ if(~force & exist(fullfile(outfolder,subjid,'MNINonLinear','subcortical_seg_4D.n
     return;
 end
 
-% setenv('FSLDIR','/disk/HCP/pipeline/external/fsl');
+setenv('FSLDIR','/aionraid/huppertt/raid2_BU/HCP//pipeline/external/fsl');
 mkdir(fullfile(outfolder,subjid,'T1w','subcortical'));
+
+if(exist(fullfile(outfolder,subjid,'T1w','T1w_acpc_dc_restore_1mm.nii.gz'))==0)
+    warning([subjid ' stage 1 not done']);
+    return;
+end
+
 copyfile(fullfile(outfolder,subjid,'T1w','T1w_acpc_dc_restore_1mm.nii.gz'),...
     fullfile(outfolder,subjid,'T1w','subcortical','T1w_acpc_dc_restore_1mm.nii.gz'));
 
 curdir=pwd;
 cd(fullfile(outfolder,subjid,'T1w','subcortical'));
 if(isempty(dir('*.vtk')))
-    system('/disk/HCP/pipeline/external/fsl/bin/run_first_all -v -i T1w_acpc_dc_restore_1mm.nii.gz -o subcortical');
+    system('/aionraid/huppertt/raid2_BU/HCP//pipeline/external/fsl/bin/run_first_all -v -i T1w_acpc_dc_restore_1mm.nii.gz -o subcortical');
 end
 % T=dlmread('T1w_acpc_dc_restore_1mm_to_std_sub.mat');
 a=load_nifti('T1w_acpc_dc_restore_1mm.nii.gz');

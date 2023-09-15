@@ -1,11 +1,13 @@
 function HCP_GroupLevel(outfolder);
 
-HCProot='/disk/HCP';
+HCP_matlab_setenv;  % Sets the FSL, Freesurfer, etc folders 
+if(~exist('HCProot'))
+    HCProot='/aionraid/huppertt/raid2_BU/HCP/';
+end
 if(nargin<1)
     outfolder=fullfile(HCProot,'analyzed');
 end
 
-HCP_matlab_setenv;  % Sets the FSL, Freesurfer, etc folders 
 
 
 
@@ -73,11 +75,11 @@ system([ HCProot '/pipeline/projects/Pipelines/MSMRemoveGroupDrift/MSMRemoveGrou
 StudyFolder=outfolder;
 % GroupAverageName='COBRA_Group';
 GroupAverageName='Group';
-SurfaceAtlasDIR='/disk/HCP/pipeline/projects/Pipelines/global/templates/standard_mesh_atlases' ;
-GrayordinatesSpaceDIR='/disk/HCP/pipeline/projects/Pipelines/global/templates/91282_Greyordinates' ;
+SurfaceAtlasDIR=[ HCProot '/pipeline/projects/Pipelines/global/templates/standard_mesh_atlases'] ;
+GrayordinatesSpaceDIR=[HCProot '/pipeline/projects/Pipelines/global/templates/91282_Greyordinates'] ;
 HighResMesh='164';
 LowResMesh='32';
-FreeSurferLabels='/disk/HCP/pipeline/projects/Pipelines/global/config/FreeSurferAllLut.txt';
+FreeSurferLabels=[HCProot '/pipeline/projects/Pipelines/global/config/FreeSurferAllLut.txt'];
 Caret7_Command='wb_command';
 Sigma='1'; %Pregradient Smoothing
 RegName='NONE';
@@ -88,7 +90,7 @@ GradientMaps='MyelinMap_BC@SmoothedMyelinMap_BC@corrThickness';
 MultiMaps='NONE'; % #I.e. contain multiple columns
 STDMaps='sulc@curvature@corrThickness@thickness@MyelinMap_BC';
 
-system(['/disk/HCP/pipeline/projects/Pipelines/Supplemental/MakeAverageDataset/MakeAverageDataset.sh '...
+system([HCProot '/pipeline/projects/Pipelines/Supplemental/MakeAverageDataset/MakeAverageDataset.sh '...
     ' --subject-list=' subjlist ' --study-folder=' StudyFolder ' --group-average-name=' GroupAverageName ' --surface-atlas-dir=' SurfaceAtlasDIR ...
     ' --grayordinates-space-dir=' GrayordinatesSpaceDIR ' --high-res-mesh=' HighResMesh ' --low-res-meshes=' LowResMesh ...
     ' --freesurfer-labels=' FreeSurferLabels ' --sigma=' Sigma ...

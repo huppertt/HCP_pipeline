@@ -1,8 +1,0 @@
-cd /disk/HCP/pipeline/analysis/Xnat/;
-HCP_AddAll_Xnat;
-cd /disk/sulcus;
-Run_All_Analysis;
-cd /disk/sulcus1/COBRA;
-HCP_run_all_automated;
-HCP_run_all_automated([],[3 5 7 8 9],false,true);
-HCP_MakeSummary;

@@ -1,14 +1,14 @@
 function HCP_MSM(subjid,outfolder)
 
+HCP_matlab_setenv;  % Sets the FSL, Freesurfer, etc folders 
 
-HCProot='/disk/HCP';
+
 if(nargin<2)
     outfolder=fullfile(HCProot,'analyzed');
 end
 
-HCP_matlab_setenv;  % Sets the FSL, Freesurfer, etc folders 
-
-LUT='/disk/HCP/pipeline/projects/Pipelines/global/config/FreeSurferAllLut.txt';
+HCProot='/aionraid/huppertt/raid2_BU/HCP';
+LUT=[HCProot '/pipeline/projects/Pipelines/global/config/FreeSurferAllLut.txt'];
 high_res_mesh='164';
 low_res_mesh='32';
 
@@ -29,7 +29,8 @@ output_proc_string='_prepared';
 smoothing_fwhm='4';
 brain_ordinates_res=fmrires;
 
-files=getall_BOLDfiles(fullfile(outfolder,subjid,'MNINonLinear','Results'));
+files=[dir(fullfile(outfolder,subjid,'MNINonLinear','Results','BOLD_*')); ...
+    dir(fullfile(outfolder,subjid,'MNINonLinear','Results','HEAD_RFMRI_REST*'))];
 
 highpass='2000';
 smoothing_fwhm='4';
@@ -43,7 +44,15 @@ mmaps=['MyelinMap@SmoothedMyelinMap'];
 dedrift=[outfolder '/Group/MNINonLinear/Group.L.sphere.MSMSulc.164k_fs_LR.surf.gii@'...
          outfolder '/Group/MNINonLinear/Group.R.sphere.MSMSulc.164k_fs_LR.surf.gii	'];
          
-f=getall_BOLDfiles(fullfile(outfolder,subjid));
+f=dir(fullfile(outfolder,subjid,'MNINonLinear','Results'));
+lst=[];
+for i=1:length(f)
+    if(f(i).isdir & ~ismember(f(i).name,{'.','..'}) & ~contains(f(i).name,'MSMconcat'));
+        lst=[lst i];
+    end
+end
+f=f(lst);
+
 rfmri='';
 found=[];
 for i=1:length(f)
@@ -59,7 +68,7 @@ for i=1:length(f)
     end
 end
 rfmri(1)=[];
-f2=getall_BOLDfiles(fullfile(outfolder,subjid));
+f2=dir(fullfile(outfolder,subjid,'BOLD_*'));
 f2(ismember({f2.name},{f.name}))=[];
 tfmri='';
 for i=1:length(f2)
@@ -95,7 +104,7 @@ for i=1:length(rois)
 end
 
 
-system(['/disk/HCP/pipeline/projects/Pipelines/DeDriftAndResample/DeDriftAndResamplePipeline.sh'...
+system([HCProot '/pipeline/projects/Pipelines/DeDriftAndResample/DeDriftAndResamplePipeline.sh'...
     ' --path=' outfolder ' --subject=' subjid ' --high-res-mesh=' high_res_mesh ' --low-res-meshes=' low_res_mesh...
     ' --registration-name=' regname ' --dedrift-reg-files=' dedrift ...
     ' --concat-reg-name=' conregname ' --maps=' maps ' --myelin-maps=' mmaps ...
@@ -154,9 +163,9 @@ high_res_mesh='164';
 output_fmri_name='BOLD_MSMconcat';
 input_registration_name='MSMSulc';
 
-setenv('MSMBin','/disk/HCP/pipeline/external/MSM_HOCR_v1/Centos/');
+setenv('MSMBin',[HCProot '/pipeline/external/MSM_HOCR_v1/Centos/']);
 
-system([HCProot '/pipeline/projects/Pipelines/MSMAll/MSMAllPipeline.sh' ...
+system([HCProot '/pipeline/projects/Pipelines/MSMAll/MSMAllPipeline2.sh' ...
             ' --study-folder=' outfolder ...
             ' --subject=' subjid ...
             ' --fmri-names-list=' fmrinames ...
@@ -173,3 +182,5 @@ system([HCProot '/pipeline/projects/Pipelines/MSMAll/MSMAllPipeline.sh' ...
 
 % 
 HCP_MSMall_makespec(subjid,outfolder);
+
+        
