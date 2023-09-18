@@ -1,0 +1,402 @@
+<Packages>
+    <ApplicationName>Qt 5.7.0</ApplicationName>
+    <ApplicationVersion>1.0.0</ApplicationVersion>
+    <Package>
+        <Name>qt.57</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt 5.7</Title>
+        <Description>Qt 5.7.0</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.tools</Name>
+        <Pixmap></Pixmap>
+        <Title>Tools</Title>
+        <Description>IDE, Internationalization, Design and other tools to accelerate development.</Description>
+        <Version>1.0.8-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtpurchasing</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Purchasing</Title>
+        <Description>Qt Purchasing. Cross-platform APIs for handling in-app purchases on Android, iOS, and OS X.</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtwebengine</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt WebEngine</Title>
+        <Description>The Qt WebEngine module integrates the fast moving Chromium web platform into Qt and provides a convenient API for both Qt Widgets and Qt Quick to utilize Chromium's web capabilities. Qt WebEngine takes full benefit of the whole Qt graphics stack integration allowing seamless mix and overlay of native Qt controls with web content and OpenGL shaders.</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtserialbus</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt SerialBus (TP)</Title>
+        <Description>The Qt Serial Bus module is a technology preview of the API which provides classes and functions to access CAN and ModBus.&lt;br>&lt;br>The release of Qt Serial Bus with Qt 5.7 is a Technology Preview.</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtgamepad</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Gamepad (TP)</Title>
+        <Description>The Qt Gamepad module is a technology preview of the API which provides classes and functions to access CAN and ModBus.&lt;br>&lt;br>The release of Qt Gamepad with Qt 5.7 is a Technology Preview.</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtscxml</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt SCXML (TP)</Title>
+        <Description>The Qt SCXML module provides functionality to create state machines from SCXML files. This includes both dynamically creating state machines (loading the SCXML file and instantiating states and transitions) and generating a C++ file that has a class implementing the state machine. It also contains functionality to support data models and executable content.&lt;br>&lt;br>The release of Qt Scxml with Qt 5.7 is a Technology Preview.</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.qtscript</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Script (Deprecated)</Title>
+        <Description>Qt Script (Deprecated) Prebuilt Components for Qt 5.7.0</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.tools.qtcreator</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Creator 4.0.2</Title>
+        <Description>IDE for Qt application development</Description>
+        <Version>4.0.2-0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>246851749</Size>
+        <Dependencies></Dependencies>
+        <ForcedInstallation>true</ForcedInstallation>
+    </Package>
+    <Package>
+        <Name>qt.license.thirdparty</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt 3rd Party Licenses</Title>
+        <Description></Description>
+        <Version>1.0.0</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>23056</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.license.lgpl</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt License LGPL</Title>
+        <Description></Description>
+        <Version>1.0.1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt</Title>
+        <Description>Qt 5.7.0</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>0</Size>
+        <Dependencies>qt.license.thirdparty,qt.license.lgpl</Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.57.examples</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt 5.7 Examples</Title>
+        <Description>Qt 5.7 Examples</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>81322436</Size>
+        <Dependencies>qt.tools</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt 5.7 Documentation</Title>
+        <Description>Qt 5.7 documentation</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>428458943</Size>
+        <Dependencies>qt.tools</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Desktop gcc 64-bit</Title>
+        <Description>Qt 5.7.0 Prebuilt Components for Desktop gcc 64-bit</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>180143770</Size>
+        <Dependencies>qt.tools.qtcreator,qt.57.doc,qt.57.examples</Dependencies>
+    </Package>
+    <Package>
+        <Name>qt.installer.changelog</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Installer Changelog</Title>
+        <Description></Description>
+        <Version>1.0.1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>1024</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtwebengine</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for QtWebEngine</Title>
+        <Description>Documentation for QtWebEngine</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>7314469</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtscxml</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for Qt Scxml (Technology Preview)</Title>
+        <Description>Documentation for Qt Scxml (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>1999876</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtserialbus</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for Qt SerialBus (Technology Preview)</Title>
+        <Description>Documentation for Qt SerialBus (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>2049909</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtpurchasing</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for Qt5.7 GPLv3 components (QtPurchasing)</Title>
+        <Description>Documentation for Qt5.7 GPLv3 components (QtPurchasing)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>937723</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtgamepad</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for Qt Gamepad (Technology Preview)</Title>
+        <Description>Documentation for Qt Gamepad (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>790119</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.doc.qtscript</Name>
+        <Pixmap></Pixmap>
+        <Title>Documentation for Qt5.7 Deprecated components (QtScript)</Title>
+        <Description>Documentation for Qt5.7 Deprecated components (QtScript)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>3934148</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtpurchasing</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for Qt5.7 GPLv3 components (QtPurchasing)</Title>
+        <Description>Examples for Qt5.7 GPLv3 components (QtPurchasing)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>312726</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtgamepad</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for Qt Gamepad (Technology Preview)</Title>
+        <Description>Examples for Qt Gamepad (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>471475</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtserialbus</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for Qt SerialBus (Technology Preview)</Title>
+        <Description>Examples for Qt SerialBus (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>446894</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtwebengine</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for QtWebEngine</Title>
+        <Description>Examples for QtWebEngine</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>1514110</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtscript</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for Qt5.7 Deprecated components (QtScript)</Title>
+        <Description>Examples for Qt5.7 Deprecated components (QtScript)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>299377</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.examples.qtscxml</Name>
+        <Pixmap></Pixmap>
+        <Title>Examples for Qt Scxml (Technology Preview)</Title>
+        <Description>Examples for Qt Scxml (Technology Preview)</Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>414982</Size>
+        <Dependencies></Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtpurchasing.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Purchasing for gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>125202</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtwebengine.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt WebEngine for Desktop gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>119445405</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtserialbus.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Serialbus for gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>550646</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtgamepad.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Gamepad for gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>295462</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtscxml.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Scxml for gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>1032160</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+    <Package>
+        <Name>qt.57.qtscript.gcc_64</Name>
+        <Pixmap></Pixmap>
+        <Title>Qt Script for gcc 64-bit</Title>
+        <Description></Description>
+        <Version>5.7.0-1</Version>
+        <LastUpdateDate></LastUpdateDate>
+        <InstallDate>2016-08-22</InstallDate>
+        <Size>3806146</Size>
+        <Dependencies>qt.57.gcc_64</Dependencies>
+        <Virtual>true</Virtual>
+    </Package>
+</Packages>
